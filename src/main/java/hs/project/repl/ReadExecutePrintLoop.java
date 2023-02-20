@@ -1,9 +1,10 @@
 package hs.project.repl;
 
+import hs.project.repl.ReadExecutePrintLoopManager.ReadExecutePrintLoopManager;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 
 /**
@@ -13,7 +14,6 @@ public class ReadExecutePrintLoop {
     private static final String userPrompt = "db > ";
     private boolean status = false;
     private String input;
-    private final String[] commands = {".exit"};
 
     public ReadExecutePrintLoop() {
     }
@@ -25,11 +25,9 @@ public class ReadExecutePrintLoop {
             this.printPrompt();
             this.readInput();
 
-            if (checkCommands(input)) {
-                System.out.println("Good command!");
-            } else {
-                System.out.println("Bad command! If you wish to see the available commands, type .help");
-            }
+            ReadExecutePrintLoopManager readExecutePrintLoopManager = new ReadExecutePrintLoopManager();
+            readExecutePrintLoopManager.managePages(input);
+
         }
     }
 
@@ -49,9 +47,5 @@ public class ReadExecutePrintLoop {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-    public boolean checkCommands(String command) {
-        return Arrays.asList(commands).contains(command);
     }
 }

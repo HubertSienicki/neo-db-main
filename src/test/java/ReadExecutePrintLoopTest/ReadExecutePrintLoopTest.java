@@ -1,3 +1,5 @@
+package ReadExecutePrintLoopTest;
+
 import hs.project.repl.ReadExecutePrintLoop;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
