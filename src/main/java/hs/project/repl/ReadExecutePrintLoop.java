@@ -1,7 +1,6 @@
 package hs.project.repl;
 
-import hs.project.repl.ReadExecutePrintLoopManager.ReadExecutePrintLoopManager;
-
+import hs.project.SQLCompiler.StatementEvaluator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,9 +24,8 @@ public class ReadExecutePrintLoop {
             this.printPrompt();
             this.readInput();
 
-            ReadExecutePrintLoopManager readExecutePrintLoopManager = new ReadExecutePrintLoopManager();
-            readExecutePrintLoopManager.managePages(input);
-
+            StatementEvaluator statementEvaluator = new StatementEvaluator(input);
+            statementEvaluator.evaluateStatement();
         }
     }
 
